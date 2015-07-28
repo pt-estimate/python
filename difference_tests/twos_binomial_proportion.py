@@ -9,10 +9,10 @@ import sys
 
 
 def csv_extract_binomial_parameters(csv_file):
-    csv_file_object = csv.reader(open('/Users/chriswright/notebooks/notebook_data/phys_training.csv', 'rb'))
+    """Ingest csv and extract first two columns for difference test"""
+    csv_file_object = csv.reader(open(csv_file, 'rb'))
     header = csv_file_object.next()
     data=[]
-
     for row in csv_file_object:
         data.append(row[0:])
     data = np.array(data)
@@ -37,9 +37,9 @@ def main():
     else:
         print "\nNo input file given, generating random binomial data for test."
         n1, n2 = 10, 10
-        s1 = np.random.binomial(n1, p=0.3, size=1)
-        s2 = np.random.binomial(n2, p=0.6, size=1)
-    lb, ub = list(itertools.chain(*(difference(n1, n2, s1, s2))))
+        s1 = np.random.binomial(n1, p=0.3, size=1)[0]
+        s2 = np.random.binomial(n2, p=0.6, size=1)[0]
+    lb, ub = difference(n1, n2, s1, s2)
     print "\nWe are 95%% confident the difference in probabilities p1-p2 lies in the interval %f to %f.\nApproximately 95%% of the intervals calculated in this manner will contain the true difference." % (lb, ub)
 
 
