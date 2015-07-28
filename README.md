@@ -1,2 +1,1 @@
-# python
-##A collection of statistical tests for analysing group differences
+##A collection of statistical tests for analyzing group differences
