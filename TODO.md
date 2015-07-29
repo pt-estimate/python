@@ -1,2 +1,2 @@
-*setup.py file
-*data ingestion for csv, json, sqlite
+* setup.py file
+* data ingestion for csv, json, sqlite
