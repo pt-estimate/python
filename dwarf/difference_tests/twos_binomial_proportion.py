@@ -16,8 +16,10 @@ def csv_extract_binomial_parameters(csv_file):
     for row in csv_file_object:
         data.append(row[0:])
     data = np.array(data)
-    n1, n2 = len(data[0::,0]), len(data[0::,1])
-    s1, s2 = np.sum(data[0::,0].astype(np.int)), np.sum(data[::,1].astype(np.int))
+    n1 = len(data[0::,0])
+    n2 =  len(data[0::,1])
+    s1 = np.sum(data[0::,0].astype(np.int))
+    s2 = np.sum(data[::,1].astype(np.int))
     return n1, n2, s1, s2
 
 def difference(n1, n2, s1, s2):
@@ -35,12 +37,13 @@ def main():
     if csv_file:
         n1, n2, s1, s2 = csv_extract_binomial_parameters(csv_file)
     else:
-        print "\nNo input file given, generating random binomial data for test."
+        print "\nNo input file given, generating random binomial test data."
         n1, n2 = 10, 10
         s1 = np.random.binomial(n1, p=0.3, size=1)[0]
         s2 = np.random.binomial(n2, p=0.6, size=1)[0]
     lb, ub = difference(n1, n2, s1, s2)
-    print "\nWe are 95%% confident the difference in probabilities p1-p2 lies in the interval %f to %f.\nApproximately 95%% of the intervals calculated in this manner will contain the true difference." % (lb, ub)
+    print "We are 95% confident the difference in probabilities p1-p2 " \
+          "lies in the interval {} to {}.".format(lb, ub)
 
 
 if __name__ == '__main__':
