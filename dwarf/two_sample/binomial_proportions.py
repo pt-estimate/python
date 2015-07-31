@@ -37,10 +37,8 @@ def main():
     if csv_file:
         n1, n2, s1, s2 = csv_extract_binomial_parameters(csv_file)
     else:
-        print "\nNo input file given, generating random binomial test data."
-        n1, n2 = 10, 10
-        s1 = np.random.binomial(n1, p=0.3, size=1)[0]
-        s2 = np.random.binomial(n2, p=0.6, size=1)[0]
+        print "\nNo input file given."
+        return None
     lb, ub = difference(n1, n2, s1, s2)
     print "We are 95% confident the difference in probabilities p1-p2 " \
           "lies in the interval {} to {}.".format(lb, ub)
