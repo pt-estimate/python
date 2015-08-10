@@ -1,1 +1,1 @@
-##A collection of statistical tests for analyzing group differences
+##A collection of statistical techniques for experimenting with data. 
